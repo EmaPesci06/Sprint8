@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Cuentas',
     'Direcciones',
     'Empleados',
+    'Prestamos',
     'Sucursales',
     'Tarjetas',
 ]

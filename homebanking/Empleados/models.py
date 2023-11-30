@@ -1,16 +1,9 @@
 from django.db import models
-from Direcciones.models import Direccion
 
-# Create your models here.
 class Empleado(models.Model):
-    id_empleado = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    dni = models.IntegerField()
-    telefono = models.IntegerField()
-    email = models.CharField(max_length=50)
-    fecha_nacimiento = models.DateField()
-    id_direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE)
-    fecha_ingreso = models.DateField()
-    usuario = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+    employee_id = models.AutoField(primary_key=True)
+    employee_name = models.CharField(max_length=50,)
+    employee_surname = models.CharField(max_length=50,)
+    employee_hire_date = models.CharField(max_length=50,)
+    employee_dni = models.CharField(max_length=50,db_column='employee_DNI')  # Field name made lowercase.
+    branch_id = models.IntegerField()

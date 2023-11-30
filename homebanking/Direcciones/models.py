@@ -1,13 +1,10 @@
 from django.db import models
-
-# Create your models here.
-class Direccion(models.Model):
-    id_direccion = models.AutoField(primary_key=True)
-    calle = models.CharField(max_length=50)
-    numero = models.IntegerField()
-    piso = models.IntegerField()
-    departamento = models.CharField(max_length=50)
-    localidad = models.CharField(max_length=50)
-    provincia = models.CharField(max_length=50)
-    pais = models.CharField(max_length=50)
-    codigo_postal = models.IntegerField()
+from Clientes.models import Cliente
+from Empleados.models import Empleado
+from Sucursales.models import Sucursal
+class Direcciones(models.Model):
+    address = models.OneToOneField(Sucursal, models.CASCADE, primary_key=True)
+    customer = models.ForeignKey(Cliente, models.CASCADE)
+    employee = models.ForeignKey(Empleado, models.CASCADE)
+    address_0 = models.TextField(db_column='address')  # Field renamed because of name conflict.
+    country = models.TextField()
