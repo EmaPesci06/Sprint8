@@ -1,10 +1,11 @@
 from django.db import models
-from Clientes.models import Cliente
-from Empleados.models import Empleado
-from Sucursales.models import Sucursal
+
 class Direcciones(models.Model):
-    address = models.OneToOneField(Sucursal, models.CASCADE, primary_key=True)
-    customer = models.ForeignKey(Cliente, models.CASCADE)
-    employee = models.ForeignKey(Empleado, models.CASCADE)
-    address_0 = models.TextField(db_column='address')  # Field renamed because of name conflict.
-    country = models.TextField()
+    address = models.OneToOneField('Sucursales.Sucursal', on_delete=models.CASCADE, primary_key=True)
+    customer = models.ForeignKey('Clientes.Cliente', on_delete=models.CASCADE, null=True)
+    employee = models.ForeignKey('Empleados.Empleado', on_delete=models.CASCADE, null=True)
+    country = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'direcciones'

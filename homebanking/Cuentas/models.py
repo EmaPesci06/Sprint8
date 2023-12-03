@@ -1,10 +1,14 @@
 from django.db import models
-from Clientes.models import Cliente
+
 # Create your models here.
-class Cuenta(models.Model):
+
+class Cuentas(models.Model):
     account_id = models.AutoField(primary_key=True)
     customer_id = models.IntegerField()
     balance = models.IntegerField()
-    iban = models.TextField()
-    type = models.TextField(blank=True, null=True)
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
+    iban = models.CharField(max_length=50)
+    type = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'cuenta'

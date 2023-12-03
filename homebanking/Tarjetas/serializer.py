@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Tarjetas
+from .models import Tarjeta
 
 class TarjetasSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tarjetas
+        model = Tarjeta
         fields = '__all__'
