@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'Clientes',
     'Cuentas',
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'Prestamos',
     'Sucursales',
     'Tarjetas',
-    'Usuario',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +143,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000"
 ]
 
-# User
-AUTH_USER_MODEL = 'Usuario.User'
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
