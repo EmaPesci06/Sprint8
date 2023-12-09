@@ -15,20 +15,22 @@ from Prestamos.serializer import PrestamoSerializer
 from Empleados.models import Empleado
 from Empleados.serializer import EmpleadoSerializer
 from rest_framework.response import Response
+from Usuario.models import User
+from Usuario.serializer import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
-
 
 @api_view(['GET'])
 def api_root(request, format = None):
     return Response({
-        'clientes': reverse('clientes-list', request=request, format=format),
-        'sucursales': reverse('sucursales-list', request=request, format=format),
-        'cuentas': reverse('cuentas-list', request=request, format=format),
-        'tarjetas': reverse('tarjetas-list', request=request, format=format),
-        'prestamos': reverse('prestamos-list', request=request, format=format),
-        'direcciones': reverse('direcciones-list', request=request, format=format),
-        'empleados': reverse('empleados-list', request=request, format=format),
+        'Clientes': reverse('clientes-list', request=request, format=format),
+        'Sucursales': reverse('sucursales-list', request=request, format=format),
+        'Cuentas': reverse('cuentas-list', request=request, format=format),
+        'Tarjetas': reverse('tarjetas-list', request=request, format=format),
+        'Prestamos': reverse('prestamos-list', request=request, format=format),
+        'Direcciones': reverse('direcciones-list', request=request, format=format),
+        'Empleados': reverse('empleados-list', request=request, format=format),
+        'Usuarios': reverse('usuarios-list', request=request, format=format),
     })
 class ClientesList(generics.ListAPIView):
     queryset = Cliente.objects.all()
@@ -65,3 +67,8 @@ class PrestamosList(generics.ListAPIView):
 class EmpleadosList(generics.ListAPIView):
     queryset = Empleado.objects.all()
     serializer_class = EmpleadoSerializer
+
+
+class UsuarioList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

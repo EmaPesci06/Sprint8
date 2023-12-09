@@ -9,3 +9,6 @@ class Sucursal(models.Model):
     class Meta:
         managed = False
         db_table = 'sucursal'
+
+    def __str__(self):
+        return self.branch_name

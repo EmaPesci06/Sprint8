@@ -5,3 +5,4 @@ class DireccionesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Direcciones
         fields = '__all__'
+        depth = 2

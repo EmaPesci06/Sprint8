@@ -13,9 +13,13 @@ class Cliente(models.Model):
     customer_surname = models.CharField(max_length=50)  # This field type is a guess.
     customer_dni = models.CharField(db_column='customer_DNI', max_length=50)  # Field name made lowercase.
     dob = models.DateField(null=True, blank=True)
-    branch_id = models.IntegerField(null=True, blank=True)
+    branch = models.ForeignKey(Sucursal, on_delete=models.CASCADE ,null=True, blank=True)
     tipo_cliente = models.CharField(max_length=50, blank=True, null=True, choices=TIPO_CLIENTE)
 
     class Meta:
         managed = False
         db_table = 'cliente'
+
+
+    def __str__(self):
+        return self.customer_name + " " + self.customer_surname

@@ -10,3 +10,6 @@ class Prestamo(models.Model):
     class Meta:
         managed = False
         db_table = 'prestamo'
+
+    def __str__(self):
+        return self.loan_type

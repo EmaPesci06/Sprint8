@@ -12,3 +12,6 @@ class Tarjeta(models.Model):
     class Meta:
         managed = False
         db_table = 'tarjeta'
+
+    def __str__(self):
+        return self.tarjeta_number + " " + self.type
